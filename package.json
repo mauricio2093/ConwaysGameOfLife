@@ -1,0 +1,28 @@
+{
+  "name": "juego-de-la-vida",
+  "version": "1.0.0",
+  "description": "John Conway's Game of Life whit JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mauricio2093/ConwaysGameOfLife.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mauricio2093/ConwaysGameOfLife/issues"
+  },
+  "homepage": "https://github.com/mauricio2093/ConwaysGameOfLife#readme",
+  "devDependencies": {
+    "eslint": "~~8.17.0",
+    "eslint-config-airbnb-base": "~~15.0.0",
+    "eslint-plugin-import": "~~2.26.0",
+    "jest": "~28.1.0"
+  }
+}
