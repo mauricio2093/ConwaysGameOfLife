@@ -19,7 +19,7 @@ class AliveCount extends ChangeStatus {
             alive += 1;
           }
         } catch (error) {
-          console.log(error);
+          continue;
         }
         if (alive > 3) {
           return alive;

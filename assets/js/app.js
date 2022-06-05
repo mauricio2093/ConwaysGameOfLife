@@ -8,7 +8,7 @@ import ChangeStatus from './ChangeStatus.js';
 import ScreemShot from './ScreemShoot.js';
 
 /* Defining the number of columns in the table. */
-const rows = 45;
+const rows = 40;
 const columns = 90; // 90
 const side = 15; // 15
 
@@ -32,7 +32,7 @@ const memory = new ScreemShot(rows, columns, screem);
 const nextStatus = () => {
   screem = memory.screemShot();
   game.rows = rows;
-  game.columns = rows;
+  game.columns = columns;
   game.screem = screem;
   game.cellStatus();
 };
