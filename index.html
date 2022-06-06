@@ -15,13 +15,17 @@
         <img src="./assets/img/icon.png" class="img" alt="icon">
       </div>
       <div class="nav">
-        <div class="dots">
-          <div class="dot" id="dot_1"></div>
+        <div class="player">
+          <div class="dots">
+            <div class="dot" id="dot_1"></div>
+          </div>
+          <button class="btn" id="play_btn" title="play"><i class="ri-play-fill ri-2x color-btn" id="playGame"></i></button>
+          <button class="btn" id="skip_btn" title="next state"><i class="ri-skip-forward-fill ri-2x color-btn"></i></button>
+          <button class="btn" id="clear_btn" title="clear"><i class="ri-refresh-line ri-2x color-btn"></i></i></button>
         </div>
-        <button class="btn" id="play_btn"><i class="ri-play-fill ri-2x color-btn" id="playGame"></i></button>
-        <button class="btn" id="skip_btn"><i class="ri-skip-forward-fill ri-2x color-btn"></i></button>
-        <button class="btn" id="clear_btn"><i class="ri-refresh-line ri-2x color-btn"></i></i></button>
-
+        <div class="location">
+          <button class="btn" id="focus_btn" title="center"><i class="ri-focus-3-fill ri-2x color-btn"></i></i></button>
+        </div>
       </div>
       <div class="indicators">
         <h3>Generation <span id="gen">0</span></h3>

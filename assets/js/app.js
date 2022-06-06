@@ -6,25 +6,28 @@ import TableGenerator from './plugins/TableGenerator.js';
 import ChangeStatus from './ChangeStatus.js';
 // eslint-disable-next-line import/extensions
 import ScreemShot from './ScreemShoot.js';
+
 /* ======  DOOM  ====== */
 const skip_btn = document.getElementById('skip_btn');
 const play_btn = document.getElementById('play_btn');
 const clear_btn = document.getElementById('clear_btn');
+const focus_btn = document.getElementById('focus_btn');
 
 document.getElementById('dot_1').style.display = 'none';
 /* Defining the number of columns in the table. */
-const rows = 40;
-const columns = 90; // 90
+const rows = 150;
+const columns = 150; // 90
 const side = 15; // 15
 
 let reproduce = false;
 let screem = [];
 
+const tableGame = new TableGenerator(rows, columns, side);
 const game = new Multiplayer({
   rows,
   columns,
   screem,
-  plugins: [new TableGenerator(rows, columns, side)],
+  plugins: [tableGame],
 });
 
 const changeStatus = (x, y) => {
@@ -104,3 +107,4 @@ play_btn.onclick = () => {
 };
 skip_btn.onclick = () => nextStatus();
 clear_btn.onclick = () => clear();
+focus_btn.onclick = () => tableGame.center();

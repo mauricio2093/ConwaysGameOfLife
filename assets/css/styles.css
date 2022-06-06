@@ -26,9 +26,9 @@ td{
   top: 0;
   left: 0;
   width: 100%;
-  margin: 10px 0 0 0;
+  margin:  0;
   display: flex;
-  padding: 0;
+  padding: 10px 0 0 0;
   justify-content: space-between;
   background-color: #1b1b1b ;
   border-bottom: solid 1px #6b6161;
@@ -51,6 +51,11 @@ td{
   justify-content: center;
   margin: 10px;
   gap: 40px;
+}
+.player{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 .dots{
   width: 16px;

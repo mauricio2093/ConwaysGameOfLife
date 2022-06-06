@@ -5,6 +5,14 @@ class TableGenerator extends NumberColumns {
   constructor(rows, columns, side) {
     super(rows, columns);
     this.side = side;
+    this.center();
+  }
+
+  center() {
+    window.scrollTo(
+      (this.side * this.columns - window.innerWidth) / 2,
+      (this.side * this.rows - window.innerHeight) / 2,
+    );
   }
 
   run() {
@@ -23,7 +31,7 @@ class TableGenerator extends NumberColumns {
     const table = document.getElementById('table');
     table.style.width = `${this.side * this.columns}px`;
     table.style.height = `${this.side * this.rows}px`;
+    this.center();
   }
 }
-
 export default TableGenerator;
