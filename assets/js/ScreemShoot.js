@@ -13,7 +13,8 @@ class ScreemShot extends NumberColumns {
       this.screem.push([]);
       for (let y = 0; y < this.rows; y += 1) {
         const cell = document.getElementById(`cell__${x}-${y}`);
-        this.screem[x][y] = cell.style.background === 'white';
+        const cellLive = cell.style.background === 'white';
+        this.screem[x][y] = cellLive;
       }
     }
     return this.screem;

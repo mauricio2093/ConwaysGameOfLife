@@ -12,15 +12,20 @@ const skip_btn = document.getElementById('skip_btn');
 const play_btn = document.getElementById('play_btn');
 const clear_btn = document.getElementById('clear_btn');
 const focus_btn = document.getElementById('focus_btn');
+const gen = document.getElementById('gen');
+const plus_btn = document.getElementById('plus_btn');
+const minium_btn = document.getElementById('minium_btn');
+const restore_btn = document.getElementById('restore_btn');
 
 document.getElementById('dot_1').style.display = 'none';
 /* Defining the number of columns in the table. */
-const rows = 150;
-const columns = 150; // 90
+const rows = 250;
+const columns = 250; // 90
 const side = 15; // 15
 
 let reproduce = false;
 let screem = [];
+let cont = 0;
 
 const tableGame = new TableGenerator(rows, columns, side);
 const game = new Multiplayer({
@@ -38,12 +43,23 @@ window.changeStatus = changeStatus;
 
 const memory = new ScreemShot(rows, columns, screem);
 
+const generation = (num) => {
+  if (num === 1) {
+    cont += 1;
+    gen.innerHTML = cont;
+  } else {
+    cont = 0;
+    gen.innerHTML = cont;
+  }
+};
+
 const nextStatus = () => {
   screem = memory.screemShot();
   game.rows = rows;
   game.columns = columns;
   game.screem = screem;
   game.cellStatus();
+  generation(1);
 };
 
 const swapPlay = () => {
@@ -77,6 +93,7 @@ const changeButton = () => {
 
 const clear = () => {
   memory.clearTable();
+  tableGame.center();
 };
 
 // Keyboard
@@ -94,6 +111,7 @@ document.addEventListener('keydown', (e) => { // keyboard controll
 
     case 8:
       clear();
+      generation(0);
       break;
 
     default:
@@ -106,5 +124,13 @@ play_btn.onclick = () => {
   changeButton();
 };
 skip_btn.onclick = () => nextStatus();
-clear_btn.onclick = () => clear();
+clear_btn.onclick = () => {
+  clear();
+  generation(0);
+};
 focus_btn.onclick = () => tableGame.center();
+focus_btn.onclick = () => tableGame.center();
+focus_btn.onclick = () => tableGame.center();
+plus_btn.onclick = () => tableGame.plus();
+minium_btn.onclick = () => tableGame.minus();
+restore_btn.onclick = () => tableGame.restore();

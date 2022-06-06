@@ -33,5 +33,31 @@ class TableGenerator extends NumberColumns {
     table.style.height = `${this.side * this.rows}px`;
     this.center();
   }
+
+  minus() {
+    this.side -= 1;
+
+    if (this.side <= 4) {
+      this.side = 4;
+      return;
+    }
+    const table = document.getElementById('table');
+    table.style.width = `${this.side * this.columns}px`;
+    table.style.height = `${this.side * this.rows}px`;
+  }
+
+  plus() {
+    this.side += 1;
+    const table = document.getElementById('table');
+    table.style.width = `${this.side * this.columns}px`;
+    table.style.height = `${this.side * this.rows}px`;
+  }
+
+  restore() {
+    this.side = 15;
+    const table = document.getElementById('table');
+    table.style.width = `${this.side * this.columns}px`;
+    table.style.height = `${this.side * this.rows}px`;
+  }
 }
 export default TableGenerator;
