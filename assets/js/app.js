@@ -10,6 +10,8 @@ import ScreemShot from './ScreemShoot.js';
 const skip_btn = document.getElementById('skip_btn');
 const play_btn = document.getElementById('play_btn');
 const clear_btn = document.getElementById('clear_btn');
+
+document.getElementById('dot_1').style.display = 'none';
 /* Defining the number of columns in the table. */
 const rows = 40;
 const columns = 90; // 90
@@ -48,6 +50,20 @@ const swapPlay = () => {
 setInterval(() => {
   if (reproduce) {
     nextStatus();
+    setTimeout(() => {
+      document.getElementById('dot_1').style.display = 'block';
+    }, 50);
+    setTimeout(() => {
+      document.getElementById('dot_1').style.display = 'none';
+      document.getElementById('dot_1').style.display = 'block';
+    }, 100);
+    setTimeout(() => {
+      document.getElementById('dot_1').style.display = 'none';
+      document.getElementById('dot_1').style.display = 'block';
+    }, 150);
+    setTimeout(() => {
+      document.getElementById('dot_1').style.display = 'none';
+    }, 200);
   }
 }, 200);
 

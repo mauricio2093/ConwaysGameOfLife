@@ -45,11 +45,29 @@ td{
 }
 
 .nav{
+  position: relative;
+  left: -80px;
   display: flex;
   justify-content: center;
   margin: 10px;
   gap: 40px;
 }
+.dots{
+  width: 16px;
+  height: 16px;
+}
+.dot{
+  position: relative;
+  top: 15px;
+  width: 10px;
+  height: 10px;
+  background-color: rgb(1, 233, 17);
+  border-radius: 50%;
+  webkit-box-shadow:0px 0px 105px 45px rgba(1, 233, 17,0.4);
+  -moz-box-shadow: 0px 0px 105px 45px rgba(1, 233, 17,0.4);
+  box-shadow: 0px 0px 5px 5px rgba(1, 233, 17,0.4);
+}
+
 .btn{
   border: none;
   cursor: pointer;
