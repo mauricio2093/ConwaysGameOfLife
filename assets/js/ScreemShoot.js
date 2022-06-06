@@ -18,6 +18,16 @@ class ScreemShot extends NumberColumns {
     }
     return this.screem;
   }
+
+  clearTable() {
+    this.screem = [];
+    for (let x = 0; x < this.columns; x += 1) {
+      for (let y = 0; y < this.rows; y += 1) {
+        const cell = document.getElementById(`cell__${x}-${y}`);
+        cell.style.background = '';
+      }
+    }
+  }
 }
 
 export default ScreemShot;

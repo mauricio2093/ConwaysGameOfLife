@@ -5,12 +5,17 @@ import ChangeStatus from './ChangeStatus.js';
 
 class MultiPlayer extends ChangeStatus {
   constructor({
-    rows, columns, screem, plugins,
+    rows,
+    columns,
+    screem,
+    plugins,
+    Reproduce,
   }) {
     super(rows, columns);
     this.screem = screem;
     this.plugins = plugins || [];
     this.initPlugins();
+    this.Reproduce = Reproduce;
   }
 
   initPlugins() {
@@ -34,6 +39,17 @@ class MultiPlayer extends ChangeStatus {
           cell.style.background = 'white';
         }
       }
+    }
+  }
+
+  changePlayButton() {
+    const playGame = document.getElementById('playGame');
+    if (this.Reproduce) {
+      playGame.classList.add('ri-pause-fill');
+      playGame.classList.remove('ri-play-fill');
+    } else {
+      playGame.classList.add('ri-play-fill');
+      playGame.classList.remove('ri-pause-fill');
     }
   }
 }

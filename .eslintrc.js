@@ -13,5 +13,7 @@ module.exports = {
   rules: {
     'linebreak-style': 0,
     'no-continue': 0,
+    // eslint-disable-next-line quote-props
+    'camelcase': 0,
   },
 };
