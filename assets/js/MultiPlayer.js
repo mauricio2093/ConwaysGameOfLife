@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/extensions
-import AliveCount from './AliveCount.js';
+import AliveCount from './modules/AliveCount.js';
 // eslint-disable-next-line import/extensions
-import ChangeStatus from './ChangeStatus.js';
+import ChangeStatus from './modules/ChangeStatus.js';
 
 class MultiPlayer extends ChangeStatus {
   constructor({

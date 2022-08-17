@@ -1,25 +1,23 @@
-// eslint-disable-next-line import/extensions
+/* eslint-disable import/extensions */
 import Multiplayer from './MultiPlayer.js';
-// eslint-disable-next-line import/extensions
 import TableGenerator from './plugins/TableGenerator.js';
-// eslint-disable-next-line import/extensions
-import ChangeStatus from './ChangeStatus.js';
-// eslint-disable-next-line import/extensions
-import ScreemShot from './ScreemShoot.js';
+import PopulationCount from './plugins/PopulationCount.js';
+import ChangeStatus from './modules/ChangeStatus.js';
+import ScreemShot from './modules/ScreemShoot.js';
 
 /* ======  DOOM  ====== */
 const skip_btn = document.getElementById('skip_btn');
 const play_btn = document.getElementById('play_btn');
 const clear_btn = document.getElementById('clear_btn');
 const focus_btn = document.getElementById('focus_btn');
-const gen = document.getElementById('gen');
+const generation = document.getElementById('generation');
 const plus_btn = document.getElementById('plus_btn');
 const minium_btn = document.getElementById('minium_btn');
 const restore_btn = document.getElementById('restore_btn');
 
 document.getElementById('dot_1').style.display = 'none';
 /* Defining the number of columns in the table. */
-const rows = 250;
+const rows = 250; // 250
 const columns = 250; // 90
 const side = 15; // 15
 
@@ -28,6 +26,7 @@ let screem = [];
 let cont = 0;
 
 const tableGame = new TableGenerator(rows, columns, side);
+
 const game = new Multiplayer({
   rows,
   columns,
@@ -35,21 +34,23 @@ const game = new Multiplayer({
   plugins: [tableGame],
 });
 
+const populationGame = new PopulationCount(rows, columns, screem);
 const changeStatus = (x, y) => {
   const change = new ChangeStatus(x, y);
   change.cellsGen();
+  populationGame.run();
 };
 window.changeStatus = changeStatus;
 
 const memory = new ScreemShot(rows, columns, screem);
 
-const generation = (num) => {
+const generationCount = (num) => {
   if (num === 1) {
     cont += 1;
-    gen.innerHTML = cont;
+    generation.innerHTML = cont;
   } else {
     cont = 0;
-    gen.innerHTML = cont;
+    generation.innerHTML = cont;
   }
 };
 
@@ -59,7 +60,8 @@ const nextStatus = () => {
   game.columns = columns;
   game.screem = screem;
   game.cellStatus();
-  generation(1);
+  generationCount(1);
+  populationGame.run();
 };
 
 const swapPlay = () => {
@@ -71,10 +73,6 @@ setInterval(() => {
     nextStatus();
     setTimeout(() => {
       document.getElementById('dot_1').style.display = 'block';
-    }, 50);
-    setTimeout(() => {
-      document.getElementById('dot_1').style.display = 'none';
-      document.getElementById('dot_1').style.display = 'block';
     }, 100);
     setTimeout(() => {
       document.getElementById('dot_1').style.display = 'none';
@@ -82,9 +80,13 @@ setInterval(() => {
     }, 150);
     setTimeout(() => {
       document.getElementById('dot_1').style.display = 'none';
+      document.getElementById('dot_1').style.display = 'block';
     }, 200);
+    setTimeout(() => {
+      document.getElementById('dot_1').style.display = 'none';
+    }, 350);
   }
-}, 200);
+}, 350);
 
 const changeButton = () => {
   game.Reproduce = reproduce;
@@ -102,6 +104,7 @@ document.addEventListener('keydown', (e) => { // keyboard controll
   switch (e.keyCode) {
     case 39:
       nextStatus();
+      populationGame.run();
       break;
 
     case 32:
@@ -122,11 +125,13 @@ document.addEventListener('keydown', (e) => { // keyboard controll
 play_btn.onclick = () => {
   swapPlay();
   changeButton();
+  populationGame.run();
 };
 skip_btn.onclick = () => nextStatus();
 clear_btn.onclick = () => {
   clear();
   generation(0);
+  populationGame.run();
 };
 focus_btn.onclick = () => tableGame.center();
 focus_btn.onclick = () => tableGame.center();

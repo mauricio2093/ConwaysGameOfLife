@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/extensions
-import NumberColumns from '../NumberColumns.js';
+import NumberColumns from '../modules/NumberColumns.js';
 
 class TableGenerator extends NumberColumns {
   constructor(rows, columns, side) {
